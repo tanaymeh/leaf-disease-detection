@@ -10,6 +10,8 @@ from tqdm import tqdm
 
 from sklearn.metrics import accuracy_score
 
+from config import Config
+
 class Trainer:
     def __init__(self, train_dataloader, valid_dataloader, model, optimizer, loss_fn, val_loss_fn, scheduler, device="cuda:0", plot_results=True):
         """
@@ -17,7 +19,6 @@ class Trainer:
         """
         self.train = train_dataloader
         self.valid = valid_dataloader
-        self.model = model
         self.optim = optim
         self.loss_fn = loss_fn
         self.val_loss_fn = val_loss_fn
@@ -44,7 +45,7 @@ class Trainer:
             y = torch.tensor(y, device=self.device, dtype=torch.long)
             
             # Get predictions
-            z = self.model(x)
+            z = model(x)
             
             # Training
             train_loss = self.loss_fn(z, y)
@@ -75,7 +76,7 @@ class Trainer:
         
         return (train_acc, train_running_loss)
 
-    def valid_one_cycle(self):
+    def valid_one_cycle(self, old_weight):
         """
         Runs one epoch of prediction and validation accuracy calculation
         """
@@ -95,7 +96,7 @@ class Trainer:
                 x = torch.tensor(x, device=self.device, dtype=torch.float32)
                 y = torch.tensor(y, device=self.device, dtype=torch.long)
                 
-                val_z = self.model(x)
+                val_z = model(x)
                 
                 val_loss = self.val_loss_fn(val_z, y)
                 
@@ -114,4 +115,8 @@ class Trainer:
             # Get the final loss
             final_loss_val = running_loss / len(self.valid)
             
-            # TODO: Complete the Trainer Class
+            # Get Validation Accuracy
+            val_accuracy = accuracy_score(all_valid_labels, all_valid_preds)
+            print(f"Validation Accuracy: {val_accuracy:.4f}")
+            
+        return (val_accuracy, final_loss_val, model)

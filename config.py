@@ -4,4 +4,3 @@ class Config:
         'tta': 3,
         'epochs':10
     }
-    
