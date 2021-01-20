@@ -1,18 +1,25 @@
-import os
-
 import numpy as np
 import pandas as pd
-import cv2
-
 import torch
 import torch.nn as nn
-from torch.utils.data import Dataset
 
-from config import Config
+import os
+import cv2
 
+import albumentations
+from torch.utils.data import DataLoader, Dataset
+
+# from config import Config
+
+class Config:
+    CFG = {
+        'img_size': 512,
+        'tta': 3,
+        'wd': 1e-6
+    }
 
 class LDCData(Dataset):
-    def __init__(self, df, num_classes=5, is_train=True, augments=None, img_size=Config.CFG['img_size'], img_path="../input/cassava-leaf-disease-classification/train_images/"):
+    def __init__(self, df, num_classes=5, is_train=True, augments=None, img_size=Config.CFG['img_size'], img_path="input/train_images/"):
         super().__init__()
         self.df = df.sample(frac=1).reset_index(drop=True)
         self.num_classes = num_classes
@@ -27,7 +34,6 @@ class LDCData(Dataset):
     def __getitem__(self, idx):
         # Read the image, Resize, convert to RGB from BGR
         img = cv2.imread(self.df['image_id'][idx])
-        img = cv2.resize(img, (self.img_size, self.img_size))
         img = img[:, :, ::-1]
         
         # Augments must be albumentations
