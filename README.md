@@ -37,7 +37,7 @@ A brief explanation to what each file does is down below:
 
 * `dataloader.py`: This file contains the Dataloader logic. For any task, you will have to do at-least some modifications with the class inside of the file like changing the data paths, and image reading sequence, etc.
 
-* `models.py`: This file contains all the different model architectures that I fine-tuned to my needs. Every different architecture's class does one and only one thing: It loads a model using the `timm` library and replaces it's last Linear layers with a new layers that has $n_{neurons} = n_{classes}$. This can be left as is and no modification is required.
+* `models.py`: This file contains all the different model architectures that I fine-tuned to my needs. Every different architecture's class does one and only one thing: It loads a model using the `timm` library and replaces it's last Linear layers with a new layers that has num_neurons = num_classes. This can be left as is and no modification is required.
 
 * `trainer.py`: This file has the main `Trainer` class. I have taken the standard pytorch training and validation routines and put them inside a class with nice tqdm progress bars and some memory optimizations. Now if you, for example want to train your model, you will just have to initialize a `Trainer` instance and then do something like:
 
