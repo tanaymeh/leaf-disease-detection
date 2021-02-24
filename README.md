@@ -1,5 +1,7 @@
 # Leaf Disease Classification using Deep Learning
 
+![](project1_img.png)
+
 ## Introduction
 
 I originally wrote this code for Cassava Leaf Disease Classification Competition on Kaggle where the task was to classify a given image of a crop into one of the 5 categories (4 classes representing different diseases and 1 class for no-disease).
