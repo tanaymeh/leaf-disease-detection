@@ -4,7 +4,7 @@
 
 ## Introduction
 
-I originally wrote this code for Cassava Leaf Disease Classification Competition on Kaggle where the task was to classify a given image of a crop into one of the 5 categories (4 classes representing different diseases and 1 class for no-disease).
+I originally wrote this code for Cassava Leaf Disease Classification Competition on Kaggle where the task was to classify a given image of a crop into one of the 5 categories (4 classes representing different diseases and 1 class for healthy plant).
 
 I did my best to write a very generalised piece of PyTorch Multi-class Image classification code that will work on any of the said type of application with little modification.
 
@@ -16,12 +16,18 @@ The Code in this repository is structured as follows:
 
 ```
 train.py
+
 src/
  | -augments.py
+ |
  | -bitemp_loss.py
+ |
  | -config.py
+ |
  | -dataloader.py
+ |
  | -models.py
+ |
  | -trainer.py
 ```
 
