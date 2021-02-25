@@ -55,7 +55,7 @@ trainer.train_one_cycle()
 trainer.valid_one_cycle()
 ```
 
-The code in this repository is pretty self-sufficient if you have had some experience with pytorch using image data and fine-tuning pre-trained image models.
+The code in this repository is pretty self-explanatory only if you have some experience with pytorch using image data and fine-tuning pre-trained image models.
 
 ## Training the Model
 
