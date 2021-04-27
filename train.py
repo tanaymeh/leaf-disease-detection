@@ -126,5 +126,5 @@ if __name__ == "__main__":
             print(f"Saving Model for this fold...")
             torch.save(op_model.state_dict(), f"resnext50_32x4d_fold_{fold_}_model.pth")
 
-        # Delete stuff for next fold of training
+        # Delete temporary variables to save memory in next fold of training
         del train_set, valid_set, train_loader, valid_loader, model, optim, loss_fn, loss_fn_val, trainer
