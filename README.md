@@ -1,4 +1,4 @@
-# Leaf Disease Classification using Deep Learning
+<h1 align='center'>Leaf Disease Classification using Deep Learning</h1>
 
 <p align="center">
 <img src="project1_img.png" alt="Picture for Representation">
