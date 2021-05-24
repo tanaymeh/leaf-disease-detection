@@ -99,9 +99,9 @@ Now, for training do:
 $ python train.py
 ```
 
-This should start a training in a few seconds and you should see a progress bar.
+This should start training in a few seconds and you should see a progress bar.
 
-If you are having any problems related to anything, please open an Issue and I will be happy to help!
+If you are having problems related to anything, please open an Issue and I will be happy to help!
 
 ## Training Results and Conclusion
 
